@@ -23,4 +23,4 @@ if [ "$YES" == false ] && [ -f "$FILE" ]; then
   fi
 
 rm -rf $FILE
-ln .vimrc $FILE
+ln init.vim $FILE

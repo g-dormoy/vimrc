@@ -45,6 +45,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Deoplete
 
 Plug 'powerman/vim-plugin-AnsiEsc' " Documentation lookup
 Plug 'tpope/vim-fugitive' " Git wrapper
+Plug 'airblade/vim-gitgutter' " Shows line modified since last git pull
 Plug 'terryma/vim-multiple-cursors' " atom like multicursor
 
 call plug#end()
@@ -60,11 +61,14 @@ if (has("termguicolors"))
 endif
 
 " Theme
+let g:one_allow_italics = 1 " Allows Italics
+
 syntax enable
 colorscheme one
 set background=dark
 
-let g:one_allow_italics = 1
+" Make comment on italic
+highlight Comment cterm=italic
 
 " Lightline
 set noshowmode " remove -- INSERT --
@@ -72,9 +76,6 @@ set noshowmode " remove -- INSERT --
 let g:lightline = {
       \ 'colorscheme': 'one',
       \ }
-
-" Make comment on italic
-highlight Comment cterm=italic
 
 " ===============
 " | Text editor |
