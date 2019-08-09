@@ -70,6 +70,15 @@ set background=dark
 " Make comment on italic
 highlight Comment cterm=italic
 
+" Make neovim bg transparant
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+set notermguicolors
+
+" Cursors tuning
+highlight CursorLine ctermbg=256
+highlight CursorColumn ctermbg=256
+
 " Lightline
 set noshowmode " remove -- INSERT --
 
