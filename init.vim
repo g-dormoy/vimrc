@@ -109,6 +109,12 @@ set title               " Set the title of the iterm tab
 " Stop highlighting on Enter
 map <CR> :noh<CR> 
 
+" Remove the arrow key
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
 "  =========
 "  | Ctags |
 "  =========
@@ -137,10 +143,6 @@ nmap <leader>vt :vsplit term://zsh<CR>
 
 let g:go_fmt_command = "goimports" " Auto imports
 
-" Error navigation
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
 
 "run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
@@ -152,6 +154,11 @@ function! s:build_go_files()
   endif
 endfunction
 
+" Error navigation
+autocmd FileType go map <leader>n :cnext<CR>
+autocmd FileType go map <leader>m :cprevious<CR>
+autocmd FileType go nnoremap <leader>a :cclose<CR>
+autocmd FileType go nnoremap <leader>t :wa<CR> :GoTest<CR>
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 
 " Synthaxe highlight for go
@@ -170,6 +177,9 @@ let g:go_metalinter_autosave = 1
 " | NERDTREE |
 " ============
 
+" Auto open
+autocmd vimenter * NERDTree | wincmd p
+
 " Open NERDTree on f3
 map <F3> :NERDTreeToggle<CR>
 
@@ -185,6 +195,9 @@ let g:deoplete#enable_at_startup = 1 " start deoplete.
 " ==========
 " | TagBar |
 " ==========
+
+" Auto open
+autocmd VimEnter * nested :TagbarOpen
 
 " Open on f4 
 nmap <F4> :TagbarToggle<CR>
